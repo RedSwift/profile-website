@@ -9,6 +9,8 @@ let getProject = function (req, res) {
 
 let postProject = function (req, res) {
   var project = new Project()
+
+  // creating based on parameters inputted
   project.name = req.body.name
   project.picture = req.body.picture
   project.description = req.body.description
@@ -16,9 +18,30 @@ let postProject = function (req, res) {
   project.heroku = req.body.heroku
   project.ghPages = req.body.ghPages
 
+  // saving created project
   project.save((err, saved) => {
     if (err) res.status(401).json(`Error while saving: ${err}`)
     else res.status(201).json(saved)
+  })
+}
+
+let putProject = function (req, res) {
+  Project.findOne({_id: req.params.id}, (err, project) => {
+    if (err) res.status(401).json(`Error in finding ID: ${err}`)
+
+    // updating if parameters found
+    if (project.name) project.name = req.body.name
+    if (project.picture) project.picture = req.body.picture
+    if (project.description) project.description = req.body.description
+    if (project.github) project.github = req.body.github
+    if (project.heroku) project.heroku = req.body.heroku
+    if (project.ghPages) project.ghPages = req.body.ghPages
+
+    // saving into database
+    project.save((err, saved) => {
+      if (err) res.status(401).json(`Error while saving: ${err}`)
+      else res.status(201).json(saved)
+    })
   })
 }
 
@@ -35,5 +58,6 @@ let deleteProject = function (req, res) {
 module.exports = {
   postProject: postProject,
   deleteProject: deleteProject,
-  getProject: getProject
+  getProject: getProject,
+  putProject: putProject
 }

@@ -45,6 +45,27 @@ describe('POST, DELETE, PUT /project', () => {
     })
   })
 
+  context('PUT /project', () => {
+    it('should update project in database', (done) => {
+      api.put('/project/' + id)
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Just Quiz',
+        picture: 'Placeholder',
+        description: 'A simple quiz game created using html, css, javascript and also jquery',
+        github: '123',
+        ghPages: 'http://redswift.github.io/Quiz'
+      })
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.body.name).to.eq('Just Quiz')
+        expect(res.body.github).to.eq('123')
+        expect(res.body.picture).to.eq('Placeholder')
+        done()
+      })
+    })
+  })
+
   context('DELETE /project', () => {
     it('should delete project from database', (done) => {
       api.delete('/project/' + id)

@@ -36,4 +36,5 @@ app.put('/profile', profileCtrl.putProfile)
 // project
 app.get('/project', projectCtrl.getProject)
 app.post('/project', projectCtrl.postProject)
+app.put('/project/:id', projectCtrl.putProject)
 app.delete('/project/:id', projectCtrl.deleteProject)
