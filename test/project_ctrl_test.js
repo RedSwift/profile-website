@@ -3,8 +3,27 @@ const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')
 const api = supertest(`http://localhost:3000`)
+const Project = require('../models/project.js')
 
-describe('POST & DELETE /project', () => {
+var projectCount
+Project.count({}, function (err, count) {
+  if (err) console.log(err)
+  else projectCount = count
+})
+
+describe('GET /project', () => {
+  it('should get all projects from the database', function (done) {
+    api.get('/project')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.body.length).to.eq(projectCount)
+        done()
+      })
+  })
+})
+
+describe('POST, DELETE, PUT /project', () => {
   var id
   context('POST /project', () => {
     it('should allow post for new project', (done) => {

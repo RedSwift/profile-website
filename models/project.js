@@ -9,5 +9,5 @@ let projectSchema = new mongoose.Schema({
   ghPages: String
 })
 
-let Project = mongoose.model('Project', projectSchema)
+const Project = mongoose.model('Project', projectSchema)
 module.exports = Project

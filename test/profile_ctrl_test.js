@@ -9,7 +9,11 @@ describe('GET /profile', function () {
     this.timeout(5000)
     api.get('/profile')
       .set('Accept', 'application/json')
-      .expect(200, done)
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.body.name).to.be.exist
+        done()
+      })
   })
 })
 
