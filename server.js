@@ -4,7 +4,8 @@ const port = process.env.PORT || 3000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-require('dotenv')
+const profileCtrl = require('./controllers/profile')
+require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -26,3 +27,6 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
+
+app.get('/profile', profileCtrl.getProfile)
+app.put('/profile', profileCtrl.putProfile)
