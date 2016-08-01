@@ -4,9 +4,9 @@ const supertest = require('supertest')
 require('../server')
 const api = supertest('http://localhost:3000')
 
-describe('GET /profile', (req, res) => {
+describe('GET /profile', function (req, res) {
   it('should return status 200', function (done) {
-    this.timeout = 5000
+    this.timeout(5000)
     api.get('/profile')
       .set('Accept', 'application/json')
       .expect(200, done)
@@ -26,5 +26,26 @@ describe('PUT /profile', (req, res) => {
       })
       .expect(201, done)
   })
-  it('should update profile')
+  it('should update profile', (done) => {
+    api.get('/profile')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.body.name).to.eq('Dom')
+        done()
+      })
+  })
+  after(function (done) {
+    this.timeout = 5000
+    api.put('/profile')
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Dominic Lam',
+        tagline: 'This is a tagline',
+        about: 'I am trying out something <br /> not sure if this works',
+        contact: 'jxdlam@gmail.com',
+        github: 'https://github.com/RedSwift'
+      })
+      .expect(201, done)
+  })
 })
