@@ -1,4 +1,5 @@
 var seeder = require('mongoose-seed')
+require('dotenv').config()
 
 seeder.connect(process.env.MONGODB_URI, function () {
   seeder.loadModels([
