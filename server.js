@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const profileCtrl = require('./controllers/profile')
+const projectCtrl = require('./controllers/project')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -28,5 +29,10 @@ app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
 
+// profile
 app.get('/profile', profileCtrl.getProfile)
 app.put('/profile', profileCtrl.putProfile)
+
+// project
+app.post('/project', projectCtrl.postProject)
+app.delete('/project/:id', projectCtrl.deleteProject)

@@ -4,7 +4,7 @@ const supertest = require('supertest')
 require('../server')
 const api = supertest('http://localhost:3000')
 
-describe('GET /profile', function (req, res) {
+describe('GET /profile', function () {
   it('should return status 200', function (done) {
     this.timeout(5000)
     api.get('/profile')
@@ -13,7 +13,7 @@ describe('GET /profile', function (req, res) {
   })
 })
 
-describe('PUT /profile', (req, res) => {
+describe('PUT /profile', () => {
   it('should return status 201', (done) => {
     api.put('/profile')
       .set('Accept', 'application/json')
