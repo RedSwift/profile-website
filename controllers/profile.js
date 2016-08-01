@@ -1,14 +1,14 @@
 const Profile = require('../models/profile.js')
 
 let getProfile = function (req, res) {
-  Profile.find({}, (err, profile) => {
+  Profile.findOne({}, (err, profile) => {
     if (err) res.status(401).json(`Error: ${err}`)
     else res.status(200).json(profile)
   })
 }
 
 let putProfile = function (req, res) {
-  Profile.find({}, (err, profile) => {
+  Profile.findOne({}, (err, profile) => {
     if (err) res.status(401).json(`Error: ${err}`)
 
     // updating profile if input exists
@@ -19,7 +19,7 @@ let putProfile = function (req, res) {
     if (req.body.github) profile.github = req.body.github
 
     // saving profile
-    profile.save((err) => {
+    profile.save((err, profile) => {
       if (err) res.status(401).json(`Error occurred while saving: ${err}`)
       else res.status(201).json(profile)
     })
