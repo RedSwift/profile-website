@@ -1,5 +1,12 @@
 const Skill = require('../models/skill')
 
+let getSkill = function (req, res) {
+  Skill.find({}, (err, skill) => {
+    if (err) res.status(401).json(`Error occured while finding skills: ${err}`)
+    else res.status(200).json(skill)
+  })
+}
+
 let postSkill = function (req, res) {
   let newSkill = new Skill()
 
@@ -24,5 +31,6 @@ let deleteSkill = function (req, res) {
 
 module.exports = {
   postSkill: postSkill,
-  deleteSkill: deleteSkill
+  deleteSkill: deleteSkill,
+  getSkill: getSkill
 }

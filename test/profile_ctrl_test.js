@@ -1,4 +1,4 @@
-/* globals it describe*/
+/* globals it describe after*/
 const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')
@@ -11,6 +11,7 @@ describe('GET /profile', function () {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
+        expect(res.status).to.eq(200)
         expect(res.body.name).to.be.exist
         done()
       })
@@ -35,6 +36,7 @@ describe('PUT /profile', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
+        expect(res.status).to.eq(200)
         expect(res.body.name).to.eq('Dom')
         done()
       })

@@ -17,6 +17,7 @@ describe('GET /project', () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
+        expect(res.status).to.eq(200)
         expect(res.body.length).to.eq(projectCount)
         done()
       })
@@ -39,6 +40,7 @@ describe('POST, DELETE, PUT /project', () => {
         .end((err, res) => {
           expect(err).to.be.null
           expect(res.body.name).to.eq('Bible Quiz')
+          expect(res.status).to.eq(201)
           id = res.body._id
           done()
         })
@@ -61,6 +63,7 @@ describe('POST, DELETE, PUT /project', () => {
         expect(res.body.name).to.eq('Just Quiz')
         expect(res.body.github).to.eq('123')
         expect(res.body.picture).to.eq('Placeholder')
+        expect(res.status).to.eq(201)
         done()
       })
     })
@@ -73,6 +76,7 @@ describe('POST, DELETE, PUT /project', () => {
         .end((err, res) => {
           expect(err).to.be.null
           expect(res.body).to.eq('successfully removed document')
+          expect(res.status).to.eq(201)
           done()
         })
     })
