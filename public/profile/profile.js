@@ -9,7 +9,7 @@ angular.module('myApp')
     controller: function ($scope, $http) {
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/profile'
+        url: 'https://redswift.herokuapp.com/api/profile'
       }).then(function success (res) {
         $scope.myInfo = res.data
       }, function error (err) {
