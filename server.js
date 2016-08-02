@@ -31,17 +31,17 @@ app.get('/', (req, res) => {
 })
 
 // profile
-app.get('/profile', profileCtrl.getProfile)
-app.put('/profile', profileCtrl.putProfile)
+app.get('/api/profile', profileCtrl.getProfile)
+app.put('/api/profile', profileCtrl.putProfile)
 
 // project
-app.get('/project', projectCtrl.getProject)
-app.post('/project', projectCtrl.postProject)
-app.put('/project/:id', projectCtrl.putProject)
-app.delete('/project/:id', projectCtrl.deleteProject)
+app.get('/api/project', projectCtrl.getProject)
+app.post('/api/project', projectCtrl.postProject)
+app.put('/api/project/:id', projectCtrl.putProject)
+app.delete('/api/project/:id', projectCtrl.deleteProject)
 
 // skills
-app.get('/skill', skillCtrl.getSkill)
-app.post('/skill', skillCtrl.postSkill)
-app.put('/skill/:id', skillCtrl.putSkill)
-app.delete('/skill/:id', skillCtrl.deleteSkill)
+app.get('/api/skill', skillCtrl.getSkill)
+app.post('/api/skill', skillCtrl.postSkill)
+app.put('/api/skill/:id', skillCtrl.putSkill)
+app.delete('/api/skill/:id', skillCtrl.deleteSkill)

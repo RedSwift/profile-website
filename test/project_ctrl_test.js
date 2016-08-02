@@ -11,9 +11,9 @@ Project.count({}, function (err, count) {
   else projectCount = count
 })
 
-describe('GET /project', () => {
+describe('GET /api/project', () => {
   it('should get all projects from the database', function (done) {
-    api.get('/project')
+    api.get('/api/project')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
@@ -26,9 +26,9 @@ describe('GET /project', () => {
 
 describe('POST, DELETE, PUT /project', () => {
   var id
-  context('POST /project', () => {
+  context('POST /api/project', () => {
     it('should allow post for new project', (done) => {
-      api.post('/project')
+      api.post('/api/project')
         .set('Accept', 'application/json')
         .send({
           name: 'Bible Quiz',
@@ -47,9 +47,9 @@ describe('POST, DELETE, PUT /project', () => {
     })
   })
 
-  context('PUT /project', () => {
+  context('PUT /api/project', () => {
     it('should update project in database', (done) => {
-      api.put('/project/' + id)
+      api.put('/api/project/' + id)
       .set('Accept', 'application/json')
       .send({
         name: 'Just Quiz',
@@ -69,9 +69,9 @@ describe('POST, DELETE, PUT /project', () => {
     })
   })
 
-  context('DELETE /project', () => {
+  context('DELETE /api/project', () => {
     it('should delete project from database', (done) => {
-      api.delete('/project/' + id)
+      api.delete('/api/project/' + id)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(err).to.be.null

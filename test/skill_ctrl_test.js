@@ -11,9 +11,9 @@ Skill.count({}, (err, count) => {
   else skillCount = count
 })
 
-describe('GET /skill', () => {
+describe('GET /api/skill', () => {
   it('should allow get all skills', (done) => {
-    api.get('/skill')
+    api.get('/api/skill')
     .set('Accept', 'application/json')
     .end((err, res) => {
       expect(err).to.be.a.null
@@ -26,9 +26,9 @@ describe('GET /skill', () => {
 
 describe('POST, PUT & DELETE /skill', () => {
   var id
-  context('POST /skill', () => {
+  context('POST /api/skill', () => {
     it('should allow post for new skill', (done) => {
-      api.post('/skill')
+      api.post('/api/skill')
         .set('Accept', 'application/json')
         .send({
           skill: 'ReactJS',
@@ -45,9 +45,9 @@ describe('POST, PUT & DELETE /skill', () => {
     })
   })
 
-  context('PUT /skill/:id', () => {
+  context('PUT /api/skill/:id', () => {
     it('should update selected skill', (done) => {
-      api.put('/skill/' + id)
+      api.put('/api/skill/' + id)
         .set('Accept', 'application/json')
         .send({
           skill: 'WeActJS',
@@ -63,9 +63,9 @@ describe('POST, PUT & DELETE /skill', () => {
     })
   })
 
-  context('DELETE /skill/:id', () => {
+  context('DELETE /api/skill/:id', () => {
     it('should delete selected skill', (done) => {
-      api.delete('/skill/' + id)
+      api.delete('/api/skill/' + id)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(err).to.be.null

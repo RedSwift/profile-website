@@ -4,10 +4,10 @@ const supertest = require('supertest')
 require('../server')
 const api = supertest('http://localhost:3000')
 
-describe('GET /profile', function () {
+describe('GET /api/profile', function () {
   it('should return status 200', function (done) {
     this.timeout(5000)
-    api.get('/profile')
+    api.get('/api/profile')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
@@ -18,9 +18,9 @@ describe('GET /profile', function () {
   })
 })
 
-describe('PUT /profile', () => {
+describe('PUT /api/profile', () => {
   it('should return status 201', (done) => {
-    api.put('/profile')
+    api.put('/api/profile')
       .set('Accept', 'application/json')
       .send({
         name: 'Dom',
@@ -32,7 +32,7 @@ describe('PUT /profile', () => {
       .expect(201, done)
   })
   it('should update profile', (done) => {
-    api.get('/profile')
+    api.get('/api/profile')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
@@ -43,7 +43,7 @@ describe('PUT /profile', () => {
   })
   after(function (done) {
     this.timeout = 5000
-    api.put('/profile')
+    api.put('/api/profile')
       .set('Accept', 'application/json')
       .send({
         name: 'Dominic Lam',
