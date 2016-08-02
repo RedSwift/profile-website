@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const profileCtrl = require('./controllers/profile')
 const projectCtrl = require('./controllers/project')
+const skillCtrl = require('./controllers/skill')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -38,3 +39,6 @@ app.get('/project', projectCtrl.getProject)
 app.post('/project', projectCtrl.postProject)
 app.put('/project/:id', projectCtrl.putProject)
 app.delete('/project/:id', projectCtrl.deleteProject)
+
+// skills
+app.post('/skill', skillCtrl.postSkill)
