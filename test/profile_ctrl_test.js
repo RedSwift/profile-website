@@ -3,6 +3,7 @@ const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')
 const api = supertest('http://localhost:3000')
+require('dotenv').config()
 
 describe('GET /api/profile', function () {
   it('should return status 200', function (done) {
@@ -17,11 +18,14 @@ describe('GET /api/profile', function () {
       })
   })
 })
-
+console.log(process.env.EMAIL)
+console.log(process.env.AUTHTOKEN)
 describe('PUT /api/profile', () => {
   it('should return status 201', (done) => {
     api.put('/api/profile')
       .set('Accept', 'application/json')
+      .set('User-Email', process.env.EMAIL)
+      .set('Auth-Token', process.env.AUTHTOKEN)
       .send({
         name: 'Dom',
         tagline: 'This is a tagline',
@@ -34,6 +38,8 @@ describe('PUT /api/profile', () => {
   it('should update profile', (done) => {
     api.get('/api/profile')
       .set('Accept', 'application/json')
+      .set('User-Email', process.env.EMAIL)
+      .set('Auth-Token', process.env.AUTHTOKEN)
       .end((err, res) => {
         expect(err).to.be.null
         expect(res.status).to.eq(200)
@@ -45,6 +51,8 @@ describe('PUT /api/profile', () => {
     this.timeout = 5000
     api.put('/api/profile')
       .set('Accept', 'application/json')
+      .set('User-Email', process.env.EMAIL)
+      .set('Auth-Token', process.env.AUTHTOKEN)
       .send({
         name: 'Dominic Lam',
         tagline: 'This is a tagline',

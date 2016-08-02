@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const profileCtrl = require('./controllers/profile')
 const projectCtrl = require('./controllers/project')
 const skillCtrl = require('./controllers/skill')
+const userCtrl = require('./controllers/user')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -30,9 +31,11 @@ app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
 
+app.post('/api/login', userCtrl.signIn)
+
 // profile
 app.get('/api/profile', profileCtrl.getProfile)
-app.put('/api/profile', profileCtrl.putProfile)
+app.put('/api/profile', userCtrl.userLoggedIn, profileCtrl.putProfile)
 
 // project
 app.get('/api/project', projectCtrl.getProject)
