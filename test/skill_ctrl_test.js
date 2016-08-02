@@ -45,6 +45,24 @@ describe('POST, PUT & DELETE /skill', () => {
     })
   })
 
+  context('PUT /skill/:id', () => {
+    it('should update selected skill', (done) => {
+      api.put('/skill/' + id)
+        .set('Accept', 'application/json')
+        .send({
+          skill: 'WeActJS',
+          rating: '10'
+        })
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(201)
+          expect(res.body.skill).to.eq('WeActJS')
+          expect(res.body.rating).to.eq(10)
+          done()
+        })
+    })
+  })
+
   context('DELETE /skill/:id', () => {
     it('should delete selected skill', (done) => {
       api.delete('/skill/' + id)

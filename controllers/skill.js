@@ -19,6 +19,21 @@ let postSkill = function (req, res) {
   })
 }
 
+let putSkill = function (req, res) {
+  Skill.findOne({_id: req.params.id}, (err, skill) => {
+    if (err) res.status(401).json(`Error while finding skill: ${err}`)
+    else {
+      if (req.body.skill) skill.skill = req.body.skill
+      if (req.body.rating) skill.rating = req.body.rating
+
+      skill.save((err, result) => {
+        if (err) res.status(401).json(`Error occured while saving: ${err}`)
+        else res.status(201).json(result)
+      })
+    }
+  })
+}
+
 let deleteSkill = function (req, res) {
   Skill.findOne({_id: req.params.id}, (err, skill) => {
     if (err) res.status(401).json(`Error while finding skill: ${err}`)
@@ -32,5 +47,6 @@ let deleteSkill = function (req, res) {
 module.exports = {
   postSkill: postSkill,
   deleteSkill: deleteSkill,
-  getSkill: getSkill
+  getSkill: getSkill,
+  putSkill: putSkill
 }

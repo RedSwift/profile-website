@@ -19,9 +19,9 @@ let putProfile = function (req, res) {
     if (req.body.github) profile.github = req.body.github
 
     // saving profile
-    profile.save((err, profile) => {
+    profile.save((err, result) => {
       if (err) res.status(401).json(`Error occurred while saving: ${err}`)
-      else res.status(201).json(profile)
+      else res.status(201).json(result)
     })
   })
 }

@@ -19,9 +19,9 @@ let postProject = function (req, res) {
   project.ghPages = req.body.ghPages
 
   // saving created project
-  project.save((err, saved) => {
+  project.save((err, result) => {
     if (err) res.status(401).json(`Error while saving: ${err}`)
-    else res.status(201).json(saved)
+    else res.status(201).json(result)
   })
 }
 
@@ -38,9 +38,9 @@ let putProject = function (req, res) {
     if (project.ghPages) project.ghPages = req.body.ghPages
 
     // saving into database
-    project.save((err, saved) => {
+    project.save((err, result) => {
       if (err) res.status(401).json(`Error while saving: ${err}`)
-      else res.status(201).json(saved)
+      else res.status(201).json(result)
     })
   })
 }

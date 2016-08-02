@@ -43,4 +43,5 @@ app.delete('/project/:id', projectCtrl.deleteProject)
 // skills
 app.get('/skill', skillCtrl.getSkill)
 app.post('/skill', skillCtrl.postSkill)
+app.put('/skill/:id', skillCtrl.putSkill)
 app.delete('/skill/:id', skillCtrl.deleteSkill)
