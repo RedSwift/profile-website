@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-website",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Dominic <jxdlam@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/RedSwift/profile-website",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}
