@@ -5,7 +5,7 @@ angular.module('myApp')
     }
   })
   .component('profilePage', {
-    templateUrl: 'profile.template.html',
+    templateUrl: 'profile/profile.template.html',
     controller: function ($scope, $http) {
       $http({
         method: 'GET',
