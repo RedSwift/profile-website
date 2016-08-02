@@ -12,6 +12,17 @@ let postSkill = function (req, res) {
   })
 }
 
+let deleteSkill = function (req, res) {
+  Skill.findOne({_id: req.params.id}, (err, skill) => {
+    if (err) res.status(401).json(`Error while finding skill: ${err}`)
+    else {
+      skill.remove()
+      res.status(201).json('successfully removed document')
+    }
+  })
+}
+
 module.exports = {
-  postSkill: postSkill
+  postSkill: postSkill,
+  deleteSkill: deleteSkill
 }
