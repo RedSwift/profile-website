@@ -39,12 +39,12 @@ app.put('/api/profile', userCtrl.userLoggedIn, profileCtrl.putProfile)
 
 // project
 app.get('/api/project', projectCtrl.getProject)
-app.post('/api/project', projectCtrl.postProject)
-app.put('/api/project/:id', projectCtrl.putProject)
-app.delete('/api/project/:id', projectCtrl.deleteProject)
+app.post('/api/project', userCtrl.userLoggedIn, projectCtrl.postProject)
+app.put('/api/project/:id', userCtrl.userLoggedIn, projectCtrl.putProject)
+app.delete('/api/project/:id', userCtrl.userLoggedIn, projectCtrl.deleteProject)
 
 // skills
 app.get('/api/skill', skillCtrl.getSkill)
-app.post('/api/skill', skillCtrl.postSkill)
-app.put('/api/skill/:id', skillCtrl.putSkill)
-app.delete('/api/skill/:id', skillCtrl.deleteSkill)
+app.post('/api/skill', userCtrl.userLoggedIn, skillCtrl.postSkill)
+app.put('/api/skill/:id', userCtrl.userLoggedIn, skillCtrl.putSkill)
+app.delete('/api/skill/:id', userCtrl.userLoggedIn, skillCtrl.deleteSkill)

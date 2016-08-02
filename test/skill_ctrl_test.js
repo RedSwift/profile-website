@@ -30,6 +30,8 @@ describe('POST, PUT & DELETE /skill', () => {
     it('should allow post for new skill', (done) => {
       api.post('/api/skill')
         .set('Accept', 'application/json')
+        .set('User-Email', process.env.EMAIL)
+        .set('Auth-Token', process.env.AUTHTOKEN)
         .send({
           skill: 'ReactJS',
           rating: 6
@@ -49,6 +51,8 @@ describe('POST, PUT & DELETE /skill', () => {
     it('should update selected skill', (done) => {
       api.put('/api/skill/' + id)
         .set('Accept', 'application/json')
+        .set('User-Email', process.env.EMAIL)
+        .set('Auth-Token', process.env.AUTHTOKEN)
         .send({
           skill: 'WeActJS',
           rating: '10'
@@ -67,6 +71,8 @@ describe('POST, PUT & DELETE /skill', () => {
     it('should delete selected skill', (done) => {
       api.delete('/api/skill/' + id)
         .set('Accept', 'application/json')
+        .set('User-Email', process.env.EMAIL)
+        .set('Auth-Token', process.env.AUTHTOKEN)
         .end((err, res) => {
           expect(err).to.be.null
           expect(res.status).to.eq(201)

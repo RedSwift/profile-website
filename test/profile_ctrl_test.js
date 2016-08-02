@@ -18,8 +18,7 @@ describe('GET /api/profile', function () {
       })
   })
 })
-console.log(process.env.EMAIL)
-console.log(process.env.AUTHTOKEN)
+
 describe('PUT /api/profile', () => {
   it('should return status 201', (done) => {
     api.put('/api/profile')

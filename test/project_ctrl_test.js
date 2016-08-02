@@ -30,6 +30,8 @@ describe('POST, DELETE, PUT /project', () => {
     it('should allow post for new project', (done) => {
       api.post('/api/project')
         .set('Accept', 'application/json')
+        .set('User-Email', process.env.EMAIL)
+        .set('Auth-Token', process.env.AUTHTOKEN)
         .send({
           name: 'Bible Quiz',
           picture: 'Placeholder',
@@ -51,6 +53,8 @@ describe('POST, DELETE, PUT /project', () => {
     it('should update project in database', (done) => {
       api.put('/api/project/' + id)
       .set('Accept', 'application/json')
+      .set('User-Email', process.env.EMAIL)
+      .set('Auth-Token', process.env.AUTHTOKEN)
       .send({
         name: 'Just Quiz',
         picture: 'Placeholder',
@@ -73,6 +77,8 @@ describe('POST, DELETE, PUT /project', () => {
     it('should delete project from database', (done) => {
       api.delete('/api/project/' + id)
         .set('Accept', 'application/json')
+        .set('User-Email', process.env.EMAIL)
+        .set('Auth-Token', process.env.AUTHTOKEN)
         .end((err, res) => {
           expect(err).to.be.null
           expect(res.body).to.eq('successfully removed document')
