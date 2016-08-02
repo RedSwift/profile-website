@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "postinstall": "bower install"
   },
   "keywords": [],
   "author": "",
