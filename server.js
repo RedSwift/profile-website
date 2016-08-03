@@ -10,6 +10,13 @@ const skillCtrl = require('./controllers/skill')
 const userCtrl = require('./controllers/user')
 require('dotenv').config()
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, User-Email, Auth-Token')
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT')
+  next()
+})
+
 mongoose.connect(process.env.MONGODB_URI)
 
 app.use(express.static(__dirname + '/public'))
