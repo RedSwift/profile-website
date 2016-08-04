@@ -37,7 +37,7 @@
     </div>
 
     <div id="des-cont" layout="row" layout-align="center">
-      <div layout="column" layout-align="center center" md-whiteframe="4">
+      <div layout="column" layout-align="center center" md-whiteframe="4" >
         <div class="text-cent" flex="100"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <hr></div>
         <div flex="100">Contact ME link</div>
       </div>
@@ -45,12 +45,12 @@
 
     <div id="skill-cont" layout="column" md-whiteframe="4" class="marg-top">
       <div flex class="central-text"> Skill </div>
-      <div layout="row" flex class="central-text">
-        <div flex="33">Languages
+      <div layout="row" layout-xs="column" flex class="central-text">
+        <div flex="33" flex-xs="100">Languages
           <div flex layout="column" layout-align="center">
             <div flex>
               <p flex class="skill-text ">HTML</p>
-              <md-slider flex min="0" max="100" ng-model="90" ng-disabled="disable" aria-label="HTML" class="text-cent"></md-slider>
+              <md-slider flex min="0" max="100" ng-model="90" ng-disabled="disable" aria-label="Disabled" class="text-cent"></md-slider>
             </div>
             <div flex>
               <p class="skill-text">CSS</p>
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div flex="33">Frameworks
+        <div flex="33" flex-xs="100">Frameworks
           <div flex layout="column" layout-align="center">
             <div flex>
               <p flex class="skill-text">NodeJS</p>
@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <div flex="33">Data
+      <div flex="33" flex-xs="100">Data
         <div flex layout="column" layout-align="center">
           <div flex>
             <p flex class="skill-text">Postgres</p>
@@ -82,7 +82,38 @@
             <p flex class="skill-text">MongoDB</p>
             <md-slider flex min="0" max="100" ng-model="85" ng-disabled="disable" aria-label="HTML" class="text-cent"></md-slider>
           </div>
+        </div>
       </div>
+    </div>
+  </div>
+  <div id="port-cont" layout="row" >
+    <div flex class="central-text md-padding">Portfolio
+      <md-tabs md-dynamic-height md-border-bottom md-center-tabs >
+        <md-tab>
+          <md-tab-label>
+            <p class="black-text">All</p>
+          </md-tab-label>
+          <md-tab-body>
+            This is all my portfolios
+          </md-tab-body>
+        </md-tab>
+        <md-tab>
+          <md-tab-label>
+            <p class="black-text">Front-End</p>
+          </md-tab-label>
+          <md-tab-body>
+            Front-end Projects
+          </md-tab-body>
+        </md-tab>
+        <md-tab>
+          <md-tab-label>
+            <p class="black-text">Back-end</p>
+          </md-tab-label>
+          <md-tab-body>
+            Back-end Projects
+          </md-tab-body>
+        </md-tab>
+      </md-tabs>
     </div>
   </div>
 </div>
