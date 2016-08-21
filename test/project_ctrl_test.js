@@ -49,6 +49,19 @@ describe('POST, DELETE, PUT /project', () => {
     })
   })
 
+  context('SHOW /api/project/:id', () => {
+    it('should show a project', (done) => {
+      api.get('/api/project/' + id)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(200)
+          expect(res.body.name).to.eq('Bible Quiz')
+          done()
+        })
+    })
+  })
+
   context('PUT /api/project', () => {
     it('should update project in database', (done) => {
       api.put('/api/project/' + id)

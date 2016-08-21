@@ -7,6 +7,13 @@ let getProject = function (req, res) {
   })
 }
 
+let showProject = function (req, res) {
+  Project.findOne({_id: req.params.id}, (err, project) => {
+    if (err) res.status(401).json(`Error: ${err}`)
+    else res.status(200).json(project)
+  })
+}
+
 let postProject = function (req, res) {
   var project = new Project()
 
@@ -57,6 +64,7 @@ let deleteProject = function (req, res) {
 
 module.exports = {
   postProject: postProject,
+  showProject: showProject,
   deleteProject: deleteProject,
   getProject: getProject,
   putProject: putProject

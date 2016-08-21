@@ -46,6 +46,7 @@ app.put('/api/profile', userCtrl.userLoggedIn, profileCtrl.putProfile)
 
 // project
 app.get('/api/project', projectCtrl.getProject)
+app.get('/api/project/:id', projectCtrl.showProject)
 app.post('/api/project', userCtrl.userLoggedIn, projectCtrl.postProject)
 app.put('/api/project/:id', userCtrl.userLoggedIn, projectCtrl.putProject)
 app.delete('/api/project/:id', userCtrl.userLoggedIn, projectCtrl.deleteProject)

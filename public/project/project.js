@@ -4,7 +4,7 @@ angular.module('myApp')
     controller: function ($scope, $http) {
       $http({
         method: 'GET',
-        url: 'https://redswift.herokuapp.com/api/project'
+        url: 'api/project'
       }).then(function success (res) {
         $scope.myProject = res.data
       }, function error (err) {
