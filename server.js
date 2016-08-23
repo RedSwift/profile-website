@@ -8,6 +8,7 @@ const profileCtrl = require('./controllers/profile')
 const projectCtrl = require('./controllers/project')
 const skillCtrl = require('./controllers/skill')
 const userCtrl = require('./controllers/user')
+const contactCtrl = require('./controllers/contact')
 require('dotenv').config()
 
 app.use(function (req, res, next) {
@@ -39,6 +40,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/login', userCtrl.signIn)
+
+// contact form
+app.post('/api/contact', contactCtrl.sendEmail)
 
 // profile
 app.get('/api/profile', profileCtrl.getProfile)
