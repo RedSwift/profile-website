@@ -12,16 +12,13 @@ let sendEmail = function (req, res) {
     `
   }
 
-  let smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+  let transporter = nodemailer.createTransport({
+    service: 'hotmail',
     auth: {
       user: process.env.USERMAIL,
       pass: process.env.USERPASS
     }
-  }
-  let transporter = nodemailer.createTransport(smtpConfig)
+  })
 
   if (mailOptions) {
     transporter.sendMail(mailOptions, function (err, result) {
